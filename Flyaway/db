@@ -1,0 +1,36 @@
+@Embeddable
+public class Places {
+	private int place_id;
+	private String source;
+	private String desination;
+	public Places() {}
+	
+}
+@Entity
+public class Flight_path {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	@Embedded
+	@AttributeOverrides({
+		@AttributeOverride(name="place_id",column=@Column(name="source_id")),
+		@AttributeOverride(name="places",column=@Column(name="source"))
+	})
+	private Places Sourceaddress;
+	@Embedded
+	@AttributeOverrides({
+		@AttributeOverride(name="place_id",column=@Column(name="destination_id")),
+		@AttributeOverride(name="places",column=@Column(name="destination"))
+	})
+	private Places destinationaddress;
+	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
+	@JoinColumn(name = "flight_id")
+	private AirLine airline;
+	private String price;
+
+	public Flight_path(Places source,Places destination, AirLine airline, String price) {
+		this.Sourceaddress=source;
+		this.destinationaddress = destination;
+		this.airline = airline;
+		this.price = price;
+	}
