@@ -5,19 +5,38 @@
 <title>Booking</title>
 </head>
 <body>
-<form action="BookTickets" method="post">
+	<form action="BookTickets" method="post">
 		<table>
 			<tr>
+				<td>Number of Passenger</td>
+				<td><input name="passener" type="text"></td><!--<input name="source" type="text">  -->
+			</tr>
+			<tr>
 				<td>From Location</td>
-				<td><input name="source" type="text"></td>
+				<td><select id="source" name="source" size="1">
+						<option value="Bangalore">Bangalore</option>
+						<option value="Mysore">Mysore</option>
+				</select></td>
 			</tr>
 			<tr>
 				<td>Destination</td>
-				<td><input name="destination" type="text"></td>
+				<td><select id="destination" name="destination">
+						<option value="Bangalore">Bangalore</option>
+						<option value="Mysore">Mysore</option>
+						<option value="Delhi">Delhi</option>
+						<option value="Chennni">Chennni</option>
+						<option value="Goa">Goa</option>
+						<option value="Gandhinagar">Gandhinagar</option>
+						<option value="Mumbai">Mumbai</option>
+				</select></td>
 			</tr>
 			<tr>
 				<td>Fight name</td>
-				<td><input name="flight_name" type="text"></td>
+				<td><select id="flight_name" name="flight_name" size="1">
+						<option value="Air India">Air India</option>
+						<option value="Indigo">Indigo</option>
+						<option value="Spice Jet">Spice Jet</option>
+				</select></td>
 			</tr>
 			<tr>
 				<td>Date</td>

@@ -30,6 +30,7 @@
 		<mapping class="Flyawaywebapp.domain.Places"/>
 		<mapping class="Flyawaywebapp.domain.AirLine"/>
 		<mapping class="Flyawaywebapp.domain.Flight_path"/>
+		<mapping class="Flyawaywebapp.domain.Bookings"/>
 
 	</session-factory>
 

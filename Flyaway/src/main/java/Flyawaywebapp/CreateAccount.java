@@ -36,7 +36,7 @@ public class CreateAccount extends HttpServlet {
 		session.save(user);
 		session.getTransaction().commit();
 		session.close();
-		RequestDispatcher dispacther=request.getRequestDispatcher("/Main.html");
+		RequestDispatcher dispacther=request.getRequestDispatcher("/Sinup.html");
 		String welcomemessage = "Welcome to Flyaway" + username + " !!";
 		request.setAttribute("message", welcomemessage);
 		dispacther.include(request, response);

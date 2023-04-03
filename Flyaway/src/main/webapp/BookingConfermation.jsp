@@ -10,7 +10,6 @@
 </head>
 <body>
 	
-	</p>
 	<table border=1>
 		<tr>
 			<th>name</th>
@@ -20,12 +19,15 @@
 		</tr>
 		<c:forEach var="detail" items="${flight_detail}">
 			<tr>
-				<td>${detail[0]}</td>
 				<td>${detail[1]}</td>
 				<td>${detail[2]}</td>
+				<td>${detail[3]}</td>
 			</tr>
 		</c:forEach>
 	</table>
-	<a href="index.html">Home</a>
+	<p>Total price is :<%out.println(request.getAttribute("total").toString()); %></p>
+	<p>Conform booking</p>
+	<a href="Payment.html"><input type="button" onclick="Payment.html" value="Book Now"/></a>
+	<a href="Main.html">Home</a>
 </body>
 </html>

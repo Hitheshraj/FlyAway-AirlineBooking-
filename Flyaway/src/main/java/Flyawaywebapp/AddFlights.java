@@ -3,6 +3,7 @@ package Flyawaywebapp;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.hibernate.Session;
 
 import Flyawaywebapp.domain.AirLine;
+import Flyawaywebapp.domain.Bookings;
 import Flyawaywebapp.domain.Flight_path;
 import Flyawaywebapp.domain.Places;
 import Flyawaywebapp.util.HibernateUtil;
@@ -96,6 +98,7 @@ public class AddFlights extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		response.setContentType("text/html");
 		out.println("Added to db");
+	
 	}
 
 	

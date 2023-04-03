@@ -35,7 +35,7 @@ body {
 }
 
 #btn {
-	color: aqua;
+	color:white;
 	width: 20%;
 	margin-left: 2%;
 	background-color: #0277bd;
@@ -63,7 +63,7 @@ a:hover {
 }
 
 .main {
-	background-image: url("IMG/login.jpg");
+	background-image: url("IMG/Background.jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;

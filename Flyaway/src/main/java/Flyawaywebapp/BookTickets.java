@@ -32,34 +32,37 @@ public class BookTickets extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String name = "";String Time = "";String Price = "";
+		String id="";String Price = "";
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		String source = request.getParameter("source");
 		String destination = request.getParameter("destination");
 		String flight_name = request.getParameter("flight_name");
 		String date = request.getParameter("date");
 		String time = request.getParameter("time");
+		String passenger_no=request.getParameter("passener");
 		response.setContentType("text/html");
 		session.beginTransaction();
 		Query flight_detail = session.createQuery(
-				"select a.flight_name,f.Time,f.price from Places p,Flight_path f,AirLine a where p.place_id=f.place and f.airLine=a.flight_id and p.source='"
+				"select f.id,a.flight_name,f.Time,f.price from Places p,Flight_path f,AirLine a where p.place_id=f.place and f.airLine=a.flight_id and p.source='"
 						+ source + "' and p.desination='" + destination + "' and a.flight_name='" + flight_name
 						+ "' and f.Time='" + time + "'");
 		List<Object[]> detail = (List<Object[]>) flight_detail.list();
 		for (Object[] d : detail) {
-			name = d[0].toString();
-			Time = d[1].toString();
-			Price = d[2].toString();
-
+			id=d[0].toString();
+			Price=d[3].toString();
 		}
 		session.getTransaction().commit();
+		request.getSession().setAttribute("id", id);
 		session.close();
-		RequestDispatcher dispacther = request.getRequestDispatcher("/view_Users.jsp");
-		request.setAttribute("name", name);
-		request.setAttribute("Time", Time);
-		request.setAttribute("Price", Price);
+		RequestDispatcher dispacther = request.getRequestDispatcher("BookingConfermation.jsp");
+		int p=Integer.parseInt(Price);
+		int n=Integer.parseInt(passenger_no);
+		int total=p*n;
+		request.setAttribute("total", total);
+		request.getSession().setAttribute("total",total);
 		request.setAttribute("destination", destination);
 		request.setAttribute("flight_detail", detail);
+		request.setAttribute("source", source);
 		dispacther.forward(request, response);
 	}
 

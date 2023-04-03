@@ -27,8 +27,6 @@ public class Sinup extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String Errormessage = "Wrong username or password!!";
-		request.setAttribute("error", Errormessage);
 		PrintWriter out = response.getWriter();
 		response.setContentType("text/html");
 		Session session = HibernateUtil.getSessionFactory().openSession();
@@ -38,6 +36,7 @@ public class Sinup extends HttpServlet {
 				.createQuery("from User u where u.username='" + username + "'and u.password='" + password + "'").list();
 		session.beginTransaction();
 		session.getTransaction().commit();
+		request.getSession().setAttribute("name", username);
 		session.close();
 
 		if (!userdetail.isEmpty()) {
